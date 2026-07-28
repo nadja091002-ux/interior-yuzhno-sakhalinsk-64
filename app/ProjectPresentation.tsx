@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { MouseEvent } from "react";
 import type {
   Project,
   ProjectImage,
@@ -15,6 +16,30 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function assetUrl(src: string) {
   return src.startsWith("/") ? `${basePath}${src}` : src;
+}
+
+function navigateToSection(
+  event: MouseEvent<HTMLAnchorElement>,
+  sectionId: string,
+) {
+  event.preventDefault();
+
+  const section = document.getElementById(sectionId);
+  if (!section) {
+    return;
+  }
+
+  const navHeight =
+    document.querySelector<HTMLElement>(".project-nav")?.offsetHeight ?? 0;
+  const sectionTop =
+    window.scrollY + section.getBoundingClientRect().top - navHeight;
+
+  window.history.replaceState(
+    null,
+    "",
+    `${window.location.pathname}${window.location.search}`,
+  );
+  window.scrollTo({ top: Math.max(0, sectionTop), behavior: "auto" });
 }
 
 function GalleryImage({
@@ -242,7 +267,11 @@ export function ProjectPresentation({ project }: { project: Project }) {
             <span className="hero-title-line">в Южно-Сахалинске</span>
           </h1>
         </div>
-        <a className="scroll-cue" href="#plan">
+        <a
+          className="scroll-cue"
+          href="#plan"
+          onClick={(event) => navigateToSection(event, "plan")}
+        >
           Смотреть проект
           <span aria-hidden="true">↓</span>
         </a>
@@ -250,9 +279,18 @@ export function ProjectPresentation({ project }: { project: Project }) {
 
       <nav className="project-nav" aria-label="Разделы проекта">
         <div className="page-width nav-track">
-          <a href="#plan">Планировка</a>
+          <a
+            href="#plan"
+            onClick={(event) => navigateToSection(event, "plan")}
+          >
+            Планировка
+          </a>
           {project.sections.map((section) => (
-            <a href={`#${section.id}`} key={section.id}>
+            <a
+              href={`#${section.id}`}
+              onClick={(event) => navigateToSection(event, section.id)}
+              key={section.id}
+            >
               {section.title}
             </a>
           ))}
