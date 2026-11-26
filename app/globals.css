@@ -706,3 +706,64 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Editorial palette approved for the studio presentation. */
+:root {
+  --paper: #eeece5;
+  --paper-soft: #f6f3ed;
+  --ink: #292b28;
+  --ink-soft: #5d5e56;
+  --forest: #292e29;
+  --forest-light: #dedfd5;
+  --navy: #321b14;
+  --wine: #481d27;
+  --line: #cec8bc;
+  --white: #f7f3e9;
+  --chocolate: #321b14;
+}
+.hero { border: 18px solid var(--chocolate); border-top: 0; min-height: 88svh; }
+.hero-topline { width: 100%; padding: 20px 28px; background: var(--chocolate); align-self: start; letter-spacing: .08em; font-weight: 450; }
+.hero-content { padding-bottom: clamp(88px,12vh,150px); }
+.hero-shade { background: linear-gradient(180deg,rgba(29,19,13,.1),rgba(29,19,13,.02) 35%,rgba(29,19,13,.62)); }
+.hero h1 { font-weight: 400; letter-spacing: -.025em; }
+.project-nav { background: rgba(238,236,229,.97); border-color: var(--line); }
+.nav-track a { font-weight: 500; letter-spacing: .035em; }
+.nav-track a:hover,.nav-track a:focus-visible { color: var(--chocolate); border-color: var(--chocolate); }
+.section-header h2 { color: var(--chocolate); font-weight: 400; }
+.section-header { border-color: var(--line); }
+.plan-section { background: #292e29; }
+.plan-intro h2 { font-weight: 400; }
+.plan-note { color: #dedfd5; }
+.plan-pdf-link { text-transform: none; font-weight: 450; font-size: 16px; }
+.plan-carousel-toolbar p { text-transform: none; font-weight: 450; }
+.plan-visual { background: #f6f3ed; }
+.project-footer { background: #321b14; padding: 42px 0 34px; }
+.project-footer h2 { font-weight: 400; font-size: clamp(32px,3.5vw,48px); padding-bottom: 20px; border-bottom: 1px solid rgba(247,243,233,.3); }
+.footer-meta p { font-weight: 450; text-transform: none; }
+.gallery-image:focus-visible { outline-color: var(--chocolate); }
+@media(max-width:800px) {
+ .hero { border-width: 8px; border-top: 0; }
+ .hero-topline { padding: 17px 12px; font-size: 12px; letter-spacing: .02em; gap: 16px; }
+ .hero-content { width: calc(100% - 32px); }
+ .nav-track a { font-size: 13px; }
+ .project-footer { padding: 30px 0; }
+}
+/* Keep each complete visualization inside the space below the sticky menu. */
+.project-section .gallery-image {
+  display: grid;
+  place-items: center;
+  scroll-margin-top: 88px;
+}
+.project-section .gallery-image img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100svh - 112px);
+  object-fit: contain;
+  margin-inline: auto;
+}
+.project-section .gallery-image:hover img { transform: none; }
+@media (max-width: 800px) {
+  .project-section .gallery-image img { max-height: calc(100svh - 100px); }
+}
+
