@@ -35,10 +35,10 @@ export const project: Project = {
   area: "64 м²",
   year: "2026",
   cover: {
-    src: "/images/hero-living-room.jpg",
-    alt: "Зона гостиной с диваном у окна",
-    width: 3000,
-    height: 2095,
+    src: "/images/living-room-overview.jpg",
+    alt: "Общий вид кухни-гостиной со столовой зоной",
+    width: 768,
+    height: 1024,
   },
   plan: {
     src: "/images/final-plan.png",
@@ -180,3 +180,4 @@ export const project: Project = {
     },
   ],
 };
+
