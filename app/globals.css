@@ -767,3 +767,25 @@ img {
   .project-section .gallery-image img { max-height: calc(100svh - 100px); }
 }
 
+
+/* A quieter editorial cover with a complete room view. */
+.hero { display:grid; grid-template-columns:42% 58%; min-height: min(790px,86svh); border:0; background:#321b14; }
+.hero-topline { grid-column:1/-1; position:relative; z-index:2; padding:22px 32px; }
+.hero-image { left:42%; top:64px; width:58%; height:calc(100% - 64px); object-fit:cover; object-position:center 55%; animation:none; z-index:0; }
+.hero-shade { display:none; }
+.hero-content { grid-column:1; position:relative; z-index:1; width:auto; margin:0; padding:64px 38px 120px; align-self:center; }
+.hero h1 { font-size:clamp(32px,3.6vw,58px); line-height:1.08; letter-spacing:-.025em; }
+.hero-title-line { white-space:normal; }
+.hero .eyebrow { font-size:12px; line-height:1.8; opacity:.78; max-width:250px; margin-bottom:28px; }
+.scroll-cue { left:38px; right:auto; bottom:38px; font-size:12px; text-transform:none; }
+.scroll-cue span { display:none; }
+@media(max-width:800px) {
+ .hero { grid-template-columns:1fr; min-height:0; }
+ .hero-topline { grid-column:1; padding:18px; }
+ .hero-image { position:relative; grid-column:1; grid-row:2; top:auto;left:auto;width:100%;height:52svh;object-position:center 55%; }
+ .hero-content { grid-column:1;grid-row:3;padding:32px 22px 88px; }
+ .hero h1 { font-size:clamp(32px,7vw,48px); }
+ .hero .eyebrow { margin-bottom:16px;max-width:none; }
+ .scroll-cue {left:22px;bottom:28px;}
+}
+
